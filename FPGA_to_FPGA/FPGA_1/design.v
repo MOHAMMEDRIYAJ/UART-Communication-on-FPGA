@@ -6,7 +6,7 @@ module uart_top(input clk,reset,wr_en,rx_channel,
 
   wire tx_en,rx_en;  
 
-  baud_gen #(.Baud_rate(115200)) baud_rate_generator(clk,reset,tx_en,rx_en);
+  baud_gen baud_rate_generator(clk,reset,tx_en,rx_en);
   
   uart_tx Transmitter(clk,reset,tx_en,wr_en,inp_data,tx_channel);
   
