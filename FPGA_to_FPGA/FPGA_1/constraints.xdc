@@ -45,3 +45,5 @@ set_property PACKAGE_PIN N4 [get_ports rx_channel]
 
 set_property IOSTANDARD LVCMOS33 [get_ports rx_done]
 set_property PACKAGE_PIN V3 [get_ports rx_done]
+
+create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk]
