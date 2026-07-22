@@ -111,15 +111,8 @@ The UART communication speed is controlled using a baud-rate generator.
 
 # EDA Tools and Hardware
 
-## Software
-
--   AMD Vivado 2025.1
--   PySerial
-
-## Hardware
-
--   Spartan-7 FPGA
--   Boolean Board
+### Software : AMD Vivado 2025.1 , pySerial
+### Hardware : AMD Spartan-7 FPGA (Boolean Board)
 
 ------------------------------------------------------------------------
 
@@ -132,13 +125,29 @@ The UART communication speed is controlled using a baud-rate generator.
 | GND     |  <----->  | GND     |
 ```
 
-### Operation
+## Operation
 
 -   Data is loaded into the transmitter.
 -   UART TX serializes the 8-bit data.
 -   Data is transmitted bit-by-bit.
 -   UART RX reconstructs the byte.
--   Received data is displayed on LEDs 
+-   Received data is displayed on LEDs
+
+> [!NOTE]
+> Both FPGAs have different constraints in this project.
+
+
+## Simulation 
+
+<img src="Images/UART_Architecture.png" width="80%">
+
+## Schematic
+
+<img src="Images/UART_Architecture.png" width="80%">
+
+## Timing Summary
+
+<img src="Images/UART_Architecture.png" width="80%">
 
 ------------------------------------------------------------------------
 
@@ -148,7 +157,7 @@ The UART communication speed is controlled using a baud-rate generator.
 Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
 ```
 
-### Operation
+## Operation
 
 -   Accepts 8-bit binary input in terminal or console
 -   Validates binary format
@@ -156,13 +165,17 @@ Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
 -   Sends byte over serial port
 -   Displays transmitted value in FPGA
 
-------------------------------------------------------------------------
+## Simulation 
 
-# Simulation
+<img src="Images/UART_Architecture.png" width="80%">
 
-## FPGA to FPGA
+## Schematic
 
-## Python to FPGA
+<img src="Images/UART_Architecture.png" width="80%">
+
+## Timing Summary
+
+<img src="Images/UART_Architecture.png" width="80%">
  
 ------------------------------------------------------------------------
 
