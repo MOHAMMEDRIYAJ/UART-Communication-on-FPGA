@@ -109,7 +109,7 @@ The implemented UART frame follows the standard **8-N-1** configuration.
 
 The UART communication speed is controlled using a baud-rate generator.
 
--   Parameterizable baud rate
+-   Parameterizable baud rate (Current: 9600)
 -   Shared by TX and RX
 -   Easily configurable for different FPGA frequencies
 
@@ -140,20 +140,20 @@ The UART communication speed is controlled using a baud-rate generator.
 -   Received data is displayed on LEDs
 
 > [!NOTE]
-> Both FPGAs have different constraints in this project.
+> Both FPGAs have same RTL but different constraints in this project.
 
 
-## Simulation 
+## Simulation [Testbench](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/tb.v)
 
-<img src="Images/UART_Architecture.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Waveform.png" width="80%">
 
 ## Schematic
 
-<img src="Images/UART_Architecture.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Schematic.png" width="80%">
 
 ## Timing Summary
 
-<img src="Images/UART_Architecture.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Timing_Summary.png" width="80%">
 
 ------------------------------------------------------------------------
 
@@ -171,17 +171,20 @@ Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
 -   Sends byte over serial port
 -   Displays transmitted value in FPGA
 
-## Simulation 
+## Simulation [Testbench](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/tb.v)
 
-<img src="Images/UART_Architecture.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Waveform.png" width="80%">
+
+> [!NOTE]
+> Brown coloured signals are Parameter.
 
 ## Schematic
 
-<img src="Images/UART_Architecture.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Schematic.png" width="80%">
 
 ## Timing Summary
 
-<img src="Images/UART_Architecture.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Timing%20Summary.png" width="80%">
  
 ------------------------------------------------------------------------
 
