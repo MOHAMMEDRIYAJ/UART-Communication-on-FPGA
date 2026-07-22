@@ -19,7 +19,8 @@ implementation, baud-rate generation, serial data framing, FPGA hardware
 validation, and software-to-hardware communication.
 
 <p align="center">
-<img src="Images/UART_Architecture.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Block_Diagram.png" width="80%">
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Block_Diagram.png" width="80%">
 </p>
 
 ------------------------------------------------------------------------
