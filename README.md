@@ -89,6 +89,12 @@ The implemented UART frame follows the standard **8-N-1** configuration.
 | ----- | ---- | ------ | ---- |
 | 1 | 5 to 9 | 1 (optional) | 1 or 2 |
 
+### In this Project
+
+| Start | Data | Parity | Stop |
+| ----- | ---- | ------ | ---- |
+| 1 | 8 | 0 | 1 |
+
 ------------------------------------------------------------------------
 
 # Features
