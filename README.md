@@ -126,9 +126,10 @@ The UART communication speed is controlled using a baud-rate generator.
 # FPGA to FPGA Communication
 
 ``` text
-| **FPGA-1**  |           | **FPGA-2**  |
+| FPGA-1  |           | FPGA-2  |
 | UART TX |  ------>  | UART RX |
 | UART RX |  <------  | UART TX |
+| GND     |  <----->  | GND     |
 ```
 
 ### Operation
