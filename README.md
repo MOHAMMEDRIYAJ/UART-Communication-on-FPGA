@@ -78,7 +78,7 @@ Both devices must be configured with the same
 -   Stop Bits
 
 > [!NOTE]
-> Both FPGAs must share commom ground.
+> Both communicating devices must share commom ground.
 
 ------------------------------------------------------------------------
 
