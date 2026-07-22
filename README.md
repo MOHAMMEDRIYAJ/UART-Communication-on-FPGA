@@ -1,5 +1,21 @@
 # UART Communication using Verilog HDL
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Language](https://img.shields.io/badge/Language-Verilog%20HDL-blue)
+![Protocol](https://img.shields.io/badge/Protocol-UART-success)
+![FPGA](https://img.shields.io/badge/FPGA-AMD%20Spartan--7-orange)
+![Board](https://img.shields.io/badge/Board-Boolean%20Board-purple)
+![EDA](https://img.shields.io/badge/EDA-Vivado%202025.1-red)
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![pySerial](https://img.shields.io/badge/Library-pySerial-blueviolet)
+![RTL](https://img.shields.io/badge/Design-RTL-lightgrey)
+![Simulation](https://img.shields.io/badge/Simulation-Testbench-success)
+![Baud Rate](https://img.shields.io/badge/Baud%20Rate-9600%20bps-informational)
+![Interface](https://img.shields.io/badge/Interface-USB--UART-9cf)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
+![Open Source](https://img.shields.io/badge/Open%20Source-Yes-success)
+![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
+
 ## 📌 Project Overview
 
 This project demonstrates the implementation of the Universal
