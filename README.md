@@ -1,211 +1,249 @@
-# UART Communication using Verilog HDL
+# 📌 Project Overview
 
-## 📌 Project Overview
+This project demonstrates the implementation of the **Universal Asynchronous Receiver Transmitter (UART)** protocol using **Verilog HDL** on FPGA. The repository contains two independent UART communication applications designed to demonstrate both hardware-to-hardware and software-to-hardware serial communication.
 
-This project demonstrates the implementation of the Universal
-Asynchronous Receiver Transmitter (UART) protocol using Verilog HDL on
-FPGA. The repository contains two independent UART communication
-applications designed for learning, verification, and practical FPGA
-interfacing.
+The first application establishes bidirectional communication between two FPGA boards using custom UART Transmitter and Receiver modules. The second application demonstrates communication between a computer and an FPGA using **Python** and the **PySerial** library, enabling users to transmit binary data directly from software to FPGA hardware.
 
-The first application establishes serial communication between two FPGA
-boards using dedicated UART Transmitter and Receiver modules. The second
-application demonstrates communication between a computer and an FPGA
-using Python and the PySerial library, enabling users to manually
-transmit binary data from software directly to FPGA hardware.
+This project provides a practical understanding of UART protocol implementation, baud-rate generation, serial data framing, FPGA verification, and software-to-hardware interfacing.
 
-The project provides a complete understanding of UART protocol
-implementation, baud-rate generation, serial data framing, FPGA hardware
-validation, and software-to-hardware communication.
-
-<p align="center">
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Block_Diagram.png" width="80%">
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Block_Diagram.png" width="80%">
-</p>
-
-------------------------------------------------------------------------
-
-# 📑 Table of Contents
-
-1.  [Project Intent](#project-intent)
-2.  [UART Protocol](#uart-protocol)
-3.  [UART Frame Format](#uart-frame-format)
-4.  [Features](#features)
-5.  [Baud Rate Generator](#baud-rate-generator)
-6.  [EDA Tools and Hardware](#eda-tools-and-hardware)
-5.  [FPGA to FPGA Communication](#fpga-to-fpga-communication)
-6.  [Python to FPGA Communication](#python-to-fpga-communication)
-7.  [FPGA Demonstration](#fpga-demonstration)
-8.  [References](#references)
-
-------------------------------------------------------------------------
+---
 
 # Project Intent
 
-The objective of this project is to understand and implement
-asynchronous serial communication completely in hardware using Verilog
-HDL while also demonstrating hardware-software communication through
-Python.
+The objective of this project is to design and implement a complete UART communication system entirely in **Verilog HDL** and validate its functionality on FPGA hardware.
 
-The project aims to
+The project focuses on understanding the complete UART communication flow—from serial transmission and reception to practical FPGA implementation and software interfacing.
 
--   Design a synthesizable UART Transmitter
--   Design a synthesizable UART Receiver
--   Verify UART communication through simulation
--   Interface two FPGA boards
--   Interface a PC with FPGA using PySerial
--   Understand asynchronous communication and baud rate generation
--   Build a reusable UART module for future FPGA projects
+The project aims to:
 
-------------------------------------------------------------------------
+- Design a synthesizable UART Transmitter.
+- Design a synthesizable UART Receiver.
+- Implement a parameterizable baud-rate generator.
+- Verify UART functionality through simulation.
+- Establish communication between two FPGA boards.
+- Interface a PC with an FPGA using Python and PySerial.
+- Understand asynchronous serial communication.
+- Develop reusable UART modules for future FPGA projects.
+
+---
 
 # UART Protocol
 
-UART (Universal Asynchronous Receiver Transmitter) is one of the most
-widely used serial communication protocols.
+UART (**Universal Asynchronous Receiver Transmitter**) is one of the most widely used asynchronous serial communication protocols.
 
-Unlike SPI or I²C, UART does not require a clock signal between
-transmitter and receiver. Both devices communicate only using
+Unlike SPI or I²C, UART does **not** require a shared clock signal between communicating devices. Instead, both the transmitter and receiver operate independently using the same configured baud rate.
 
--   TX
--   RX
+UART communication requires only two signal lines:
 
-Both devices must be configured with the same
+- **TX (Transmit)**
+- **RX (Receive)**
 
--   Baud Rate
--   Number of Data Bits
--   Parity
--   Stop Bits
+For reliable communication, both devices must be configured with identical:
 
-> [!NOTE]
-> Both FPGAs must share commom ground.
+- Baud Rate
+- Data Bits
+- Parity Configuration
+- Stop Bits
 
-------------------------------------------------------------------------
+> **Note**
+>
+> Both communicating devices must share a common ground.
+
+---
 
 # UART Frame Format
 
-The implemented UART frame follows the standard **8-N-1** configuration.
+The UART implementation in this project follows the standard **8-N-1** configuration.
 
-| Start | Data | Parity | Stop |
-| ----- | ---- | ------ | ---- |
-| 1 | 5 to 9 | 1 (optional) | 1 or 2 |
+| Start Bit | Data Bits | Parity | Stop Bit |
+|-----------|-----------|---------|----------|
+| 1 | 8 | None | 1 |
 
 ### In this Project
 
-| Start | Data | Parity | Stop |
-| ----- | ---- | ------ | ---- |
-| 1 | 8 | 0 | 1 |
+Each UART frame consists of:
 
-------------------------------------------------------------------------
+- 1 Start Bit
+- 8 Data Bits (LSB First)
+- No Parity Bit
+- 1 Stop Bit
+
+---
 
 # Features
 
 ## FPGA to FPGA
 
+- Fully synthesizable UART Transmitter
+- Fully synthesizable UART Receiver
+- Bidirectional communication between two FPGA boards
+- Parameterizable baud-rate generator
+- FPGA implementation and validation
+- Verilog simulation support
+- Modular and reusable RTL design
+
 ## Python to FPGA
 
-------------------------------------------------------------------------
+- Sends binary data directly from a computer
+- Uses Python and PySerial
+- Binary input validation
+- Automatic binary-to-byte conversion
+- Compatible with standard USB-UART bridges
+- Displays received data on FPGA LEDs
+- Simple terminal-based interface
+
+---
 
 # Baud Rate Generator
 
-The UART communication speed is controlled using a baud-rate generator.
+UART timing is generated using a dedicated baud-rate generator shared by both the transmitter and receiver.
 
--   Parameterizable baud rate (Current: 9600)
--   Shared by TX and RX
--   Easily configurable for different FPGA frequencies
+The generator divides the FPGA system clock to generate timing pulses corresponding to the selected baud rate.
 
-------------------------------------------------------------------------
+Features include:
+
+- Parameterizable system clock frequency
+- Configurable baud rate
+- Shared timing source for TX and RX
+- Easily portable across FPGA platforms
+
+Current configuration:
+
+- **System Clock:** 100 MHz
+- **Baud Rate:** 9600 bps
+
+---
 
 # EDA Tools and Hardware
 
-#### Software : [AMD Vivado 2025.1](https://www.amd.com/en/support/downloads/adaptive-socs-and-fpgas/development-tools/2025-1.html) , [pySerial](https://pypi.org/project/pyserial/)
-#### Hardware : AMD Spartan-7 FPGA [(Boolean Board)](https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21)
+### Software
 
-------------------------------------------------------------------------
+- AMD Vivado 2025.1
+- Python 3
+- PySerial
+
+### Hardware
+
+- AMD Spartan-7 FPGA (Boolean Board)
+- USB-UART Bridge
+- Micro-USB Cable
+- Personal Computer
+
+---
 
 # FPGA to FPGA Communication
 
-``` text
-| FPGA-1  |           | FPGA-2  |
-| UART TX |  ------>  | UART RX |
-| UART RX |  <------  | UART TX |
-| GND     |  <----->  | GND     |
-```
+This application demonstrates bidirectional UART communication between two FPGA boards.
+
+Each FPGA contains:
+
+- UART Transmitter
+- UART Receiver
+
+The transmitter of one FPGA is connected to the receiver of the other FPGA while both boards share a common ground.
 
 ## Operation
 
--   Data is loaded into the transmitter.
--   UART TX serializes the 8-bit data.
--   Data is transmitted bit-by-bit.
--   UART RX reconstructs the byte.
--   Received data is displayed on LEDs
+1. Load 8-bit parallel data into the UART transmitter.
+2. UART TX serializes the byte.
+3. Serial data is transmitted over the TX line.
+4. UART RX samples the incoming bits.
+5. The received byte is reconstructed.
+6. The received data is displayed on the FPGA LEDs.
 
-> [!NOTE]
-> Both FPGAs have same RTL but different constraints in this project.
+> **Note**
+>
+> Both FPGA boards use the same RTL implementation. Only the FPGA pin constraints differ.
 
+---
 
-## Simulation [[Testbench]](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/tb.v)
+## Simulation
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Waveform.png" width="80%">
+The provided testbench verifies:
+
+- UART transmission
+- UART reception
+- Start-bit detection
+- Byte reconstruction
+- Receiver completion signal
+
+---
 
 ## Schematic
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Schematic.png" width="80%">
+The synthesized RTL schematic illustrates the hardware implementation of the UART transmitter, UART receiver, baud-rate generator, counters, shift registers, and control logic.
+
+---
 
 ## Timing Summary
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Timing_Summary.png" width="80%">
+Timing analysis confirms that the synthesized design satisfies the required setup and hold timing constraints for the target FPGA device.
 
-------------------------------------------------------------------------
+---
 
 # Python to FPGA Communication
 
-``` text
-Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
-```
+This application demonstrates software-to-hardware communication using Python and the PySerial library.
+
+The Python application accepts an 8-bit binary value from the user, validates the input, converts it into a byte, and transmits it through a USB-UART bridge to the FPGA UART Receiver.
 
 ## Operation
 
--   Accepts 8-bit binary input in terminal or console
--   Validates binary format
--   Converts binary to decimal
--   Sends byte over serial port
--   Displays transmitted value in FPGA
+1. User enters an 8-bit binary value.
+2. Input is validated.
+3. Binary value is converted into a byte.
+4. PySerial sends the byte through the selected COM port.
+5. The USB-UART bridge converts USB packets into UART signals.
+6. The FPGA UART Receiver reconstructs the received byte.
+7. The received value is displayed on the FPGA LEDs.
 
-## Simulation [[Testbench]](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/tb.v)
+---
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Waveform.png" width="80%">
+## Simulation
 
-> [!NOTE]
-> Brown coloured signals are Parameter.
+The Verilog testbench verifies:
+
+- UART reception
+- Start-bit detection
+- Data reconstruction
+- Receiver completion signal
+- Parallel output generation
+
+---
 
 ## Schematic
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Schematic.png" width="80%">
+The synthesized hardware schematic illustrates the UART Receiver architecture used for software-to-hardware communication.
+
+---
 
 ## Timing Summary
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Timing%20Summary.png" width="80%">
- 
-------------------------------------------------------------------------
+Timing analysis verifies that the UART Receiver meets all timing constraints after synthesis and implementation.
+
+---
 
 # FPGA Demonstration
 
 ## FPGA to FPGA
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Block_Diagram.png" width="80%">
+This demonstration validates successful bidirectional communication between two FPGA boards using the custom UART transmitter and receiver modules.
 
-### 🔹 [Demonstration Video Link]()
+Each transmitted byte is correctly reconstructed by the receiving FPGA and displayed on its LEDs.
+
+---
 
 ## Python to FPGA
 
-<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Block_Diagram.png" width="80%">
+This demonstration validates communication between a computer and an FPGA using a USB-UART interface.
 
-### 🔹 [Demonstration Video Link]()
+Binary values entered from the Python application are transmitted over the serial port, received by the FPGA UART Receiver, and displayed on the FPGA LEDs in real time.
 
-------------------------------------------------------------------------
+---
 
 # References
 
--   [UART Communication Protocol](https://www.analog.com/en/resources/analog-dialogue/articles/uart-a-hardware-communication-protocol.html)
--   [pySerial Documentation](https://pyserial.readthedocs.io/en/latest/pyserial.html)
+- UART Communication Protocol
+- PySerial Documentation
+- AMD Vivado Design Suite Documentation
+- AMD Spartan-7 FPGA Documentation
