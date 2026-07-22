@@ -18,34 +18,26 @@ The project provides a complete understanding of UART protocol
 implementation, baud-rate generation, serial data framing, FPGA hardware
 validation, and software-to-hardware communication.
 
-```{=html}
 <p align="center">
-```
-`<img src="Images/UART_Architecture.png" width="80%">`{=html}
-```{=html}
+<img src="Images/UART_Architecture.png" width="80%">
 </p>
-```
 
 ------------------------------------------------------------------------
 
 # 📑 Table of Contents
 
-1.  Project Intent
-2.  UART Protocol
-3.  Repository Contents
-4.  Features
-5.  UART Frame Format
-6.  FPGA to FPGA Communication
-7.  Python to FPGA Communication
-8.  Design Hierarchy
-9.  Baud Rate Generator
-10. Python Sender Application
-11. EDA Tools and Hardware
-12. File Structure
-13. Simulation
-14. FPGA Demonstration
-15. Future Improvements
-16. References
+1.  [Project Intent]()
+2.  [UART Protocol]()
+3.  [UART Frame Format]()
+4.  [Features]()
+5.  [Baud Rate Generator]()
+6.  [EDA Tools and Hardware]()
+5.  [FPGA to FPGA Communication]()
+6.  [Python to FPGA Communication]()
+7.  [Simulation]()
+8.  [FPGA Demonstration]()
+9.  [References]()
+10. [Conclusion]()
 
 ------------------------------------------------------------------------
 
@@ -78,7 +70,6 @@ transmitter and receiver. Both devices communicate only using
 
 -   TX
 -   RX
--   GND
 
 Both devices must be configured with the same
 
@@ -87,55 +78,12 @@ Both devices must be configured with the same
 -   Parity
 -   Stop Bits
 
-------------------------------------------------------------------------
+Frame
 
-# Repository Contents
+| Start | Data | Parity | Stop |
 
-``` text
-UART Communication
-│
-├── FPGA_to_FPGA
-│     ├── uart_tx.v
-│     ├── uart_rx.v
-│     ├── baud_generator.v
-│     ├── top.v
-│     └── testbench.v
-│
-├── Python_to_FPGA
-│     ├── uart_tx.v
-│     ├── uart_rx.v
-│     ├── top.v
-│     ├── sender.py
-│     └── testbench.v
-│
-├── Constraints
-├── Images
-└── README.md
-```
-
-------------------------------------------------------------------------
-
-# Features
-
-## FPGA to FPGA
-
--   Complete UART Transmitter
--   Complete UART Receiver
--   Fully synthesizable RTL
--   Configurable baud rate
--   8-bit data transmission
--   Start and Stop bit detection
--   FPGA hardware verified
--   Simulation verified
-
-## Python to FPGA
-
--   PySerial based UART communication
--   Manual binary input
--   Real-time transmission
--   FPGA receives serial data
--   Terminal-based interface
--   Easy debugging
+> [!NOTE]
+> Both FPGAs must share commom ground.
 
 ------------------------------------------------------------------------
 
@@ -150,98 +98,17 @@ The implemented UART frame follows the standard **8-N-1** configuration.
   Parity      None
   Stop Bit    1
 
-``` text
-Idle → Start → D0 D1 D2 D3 D4 D5 D6 D7 → Stop
-  1       0        8 Data Bits             1
-```
+| Start | Data | Parity | Stop |
+| ----- | ---- | ------ | ---- |
+| 1 | 8 | 0 | 1 |
 
 ------------------------------------------------------------------------
 
-# FPGA to FPGA Communication
+# Features
 
-``` text
-FPGA-1
-UART TX
-   │
-   ▼
-UART RX
-FPGA-2
-```
+## FPGA to FPGA
 
-### Operation
-
--   Data is loaded into the transmitter.
--   UART TX serializes the 8-bit data.
--   Data is transmitted bit-by-bit.
--   UART RX reconstructs the byte.
--   Received data is displayed on LEDs or Seven Segment Display.
-
-------------------------------------------------------------------------
-
-# Python to FPGA Communication
-
-``` text
-Python Application
-        │
-     PySerial
-        │
-    USB-UART
-        │
-        ▼
-FPGA UART Receiver
-```
-
-> Note : Users can manually enter binary data through the terminal.
-
-Example
-
-``` text
-Enter 8-bit binary:
-
-10101010
-
-↓
-
-UART Transmission
-
-↓
-
-FPGA Receives
-
-↓
-
-LED Output = 10101010
-```
-
-------------------------------------------------------------------------
-
-# Python Sender Application
-
-The Python application is developed using the **PySerial** library.
-
-Features
-
--   Accepts 8-bit binary input
--   Validates binary format
--   Converts binary to decimal
--   Sends byte over serial port
--   Displays transmitted value
-
-Example
-
-``` text
-UART Binary Sender
-
-Enter 8-bit binary
-
-11001010
-
-Sent
-
-Binary : 11001010
-Decimal : 202
-Hex : 0xCA
-```
+## Python to FPGA
 
 ------------------------------------------------------------------------
 
@@ -269,44 +136,53 @@ The UART communication speed is controlled using a baud-rate generator.
 
 ------------------------------------------------------------------------
 
-# File Structure
+# FPGA to FPGA Communication
 
 ``` text
-Sources/
-Simulation/
-Constraints/
-Python/
-Images/
+| FPGA-1  |   <------>   | FPGA-2  |
+| UART TX |              | UART TX |
+| UART RX |              | UART RX |
 ```
+
+### Operation
+
+-   Data is loaded into the transmitter.
+-   UART TX serializes the 8-bit data.
+-   Data is transmitted bit-by-bit.
+-   UART RX reconstructs the byte.
+-   Received data is displayed on LEDs 
+
+------------------------------------------------------------------------
+
+# Python to FPGA Communication
+
+``` text
+Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
+```
+
+### Operation
+
+-   Accepts 8-bit binary input in terminal or console
+-   Validates binary format
+-   Converts binary to decimal
+-   Sends byte over serial port
+-   Displays transmitted value in FPGA
 
 ------------------------------------------------------------------------
 
 # Simulation
 
-Simulation verifies:
+## FPGA to FPGA
 
--   Start bit detection
--   Bit timing
--   Serial transmission
--   Receiver sampling
--   Stop bit validation
--   Complete byte reception
-
-> Add waveform screenshots here.
-
+## Python to FPGA
+ 
 ------------------------------------------------------------------------
 
 # FPGA Demonstration
 
 ## FPGA to FPGA
 
--   Add hardware photographs
--   Add demonstration GIF
-
 ## Python to FPGA
-
--   Add terminal screenshot
--   Add FPGA output image
 
 ------------------------------------------------------------------------
 
