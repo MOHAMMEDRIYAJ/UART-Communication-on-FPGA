@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Language](https://img.shields.io/badge/Language-Verilog%20HDL-blue)
+![pySerial](https://img.shields.io/badge/Python-Library-pySerial-blueviolet)
 ![Protocol](https://img.shields.io/badge/Protocol-UART-success)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
