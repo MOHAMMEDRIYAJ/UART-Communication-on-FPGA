@@ -117,8 +117,8 @@ The UART communication speed is controlled using a baud-rate generator.
 
 # EDA Tools and Hardware
 
-### Software : AMD Vivado 2025.1 , pySerial
-### Hardware : AMD Spartan-7 FPGA (Boolean Board)
+#### Software : [AMD Vivado 2025.1](https://www.amd.com/en/support/downloads/adaptive-socs-and-fpgas/development-tools/2025-1.html) , [pySerial](https://pypi.org/project/pyserial/)
+#### Hardware : AMD Spartan-7 FPGA [(Boolean Board)](https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21)
 
 ------------------------------------------------------------------------
 
@@ -143,7 +143,7 @@ The UART communication speed is controlled using a baud-rate generator.
 > Both FPGAs have same RTL but different constraints in this project.
 
 
-## Simulation [Testbench](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/tb.v)
+## Simulation [[Testbench]](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/tb.v)
 
 <img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Waveform.png" width="80%">
 
@@ -171,7 +171,7 @@ Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
 -   Sends byte over serial port
 -   Displays transmitted value in FPGA
 
-## Simulation [Testbench](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/tb.v)
+## Simulation [[Testbench]](https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/tb.v)
 
 <img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Waveform.png" width="80%">
 
@@ -192,7 +192,15 @@ Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
 
 ## FPGA to FPGA
 
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Timing%20Summary.png" width="80%">
+
+### 🔹 [Demonstration Video Link]()
+
 ## Python to FPGA
+
+<img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Timing%20Summary.png" width="80%">
+
+### 🔹 [Demonstration Video Link]()
 
 ------------------------------------------------------------------------
 
