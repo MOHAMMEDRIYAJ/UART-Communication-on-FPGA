@@ -26,18 +26,16 @@ validation, and software-to-hardware communication.
 
 # 📑 Table of Contents
 
-1.  [Project Intent]()
-2.  [UART Protocol]()
-3.  [UART Frame Format]()
-4.  [Features]()
-5.  [Baud Rate Generator]()
-6.  [EDA Tools and Hardware]()
-5.  [FPGA to FPGA Communication]()
-6.  [Python to FPGA Communication]()
-7.  [Simulation]()
-8.  [FPGA Demonstration]()
-9.  [References]()
-10. [Conclusion]()
+1.  [Project Intent](#project-intent)
+2.  [UART Protocol](#uart-protocol)
+3.  [UART Frame Format](#uart-frame-format)
+4.  [Features](#features)
+5.  [Baud Rate Generator](#baud-rate-generator)
+6.  [EDA Tools and Hardware](#eda-tools-and-hardware)
+5.  [FPGA to FPGA Communication](#fpga-to-fpga-communication)
+6.  [Python to FPGA Communication](#python-to-fpga-communication)
+7.  [FPGA Demonstration](#fpga-demonstration)
+8.  [References](#references)
 
 ------------------------------------------------------------------------
 
@@ -78,10 +76,6 @@ Both devices must be configured with the same
 -   Parity
 -   Stop Bits
 
-Frame
-
-| Start | Data | Parity | Stop |
-
 > [!NOTE]
 > Both FPGAs must share commom ground.
 
@@ -90,13 +84,6 @@ Frame
 # UART Frame Format
 
 The implemented UART frame follows the standard **8-N-1** configuration.
-
-  Field       Bits
-  ----------- ------
-  Start Bit   1
-  Data Bits   8
-  Parity      None
-  Stop Bit    1
 
 | Start | Data | Parity | Stop |
 | ----- | ---- | ------ | ---- |
@@ -139,9 +126,9 @@ The UART communication speed is controlled using a baud-rate generator.
 # FPGA to FPGA Communication
 
 ``` text
-| FPGA-1  |   <------>   | FPGA-2  |
-| UART TX |              | UART TX |
-| UART RX |              | UART RX |
+| **FPGA-1**  |           | **FPGA-2**  |
+| UART TX |  ------>  | UART RX |
+| UART RX |  <------  | UART TX |
 ```
 
 ### Operation
