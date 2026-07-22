@@ -191,7 +191,7 @@ Python Application
 FPGA UART Receiver
 ```
 
-Users can manually enter binary data through the terminal.
+> Note : Users can manually enter binary data through the terminal.
 
 Example
 
@@ -245,30 +245,11 @@ Hex : 0xCA
 
 ------------------------------------------------------------------------
 
-# Design Hierarchy
-
-``` text
-Top Module
-├── Baud Rate Generator
-├── UART Transmitter
-│   ├── FSM
-│   ├── Shift Register
-│   └── Bit Counter
-├── UART Receiver
-│   ├── FSM
-│   ├── Shift Register
-│   └── Bit Counter
-└── Top Integration
-```
-
-------------------------------------------------------------------------
-
 # Baud Rate Generator
 
 The UART communication speed is controlled using a baud-rate generator.
 
 -   Parameterizable baud rate
--   FPGA clock divider
 -   Shared by TX and RX
 -   Easily configurable for different FPGA frequencies
 
@@ -278,16 +259,13 @@ The UART communication speed is controlled using a baud-rate generator.
 
 ## Software
 
--   AMD Vivado 2024.2
--   Cadence Incisive Simulator
--   Python 3.x
+-   AMD Vivado 2025.1
 -   PySerial
 
 ## Hardware
 
 -   Spartan-7 FPGA
--   USB-UART Converter
--   Boolean FPGA Board
+-   Boolean Board
 
 ------------------------------------------------------------------------
 
@@ -332,36 +310,7 @@ Simulation verifies:
 
 ------------------------------------------------------------------------
 
-# Future Improvements
-
--   Variable baud rate selection
--   UART FIFO implementation
--   Interrupt-based UART
--   Configurable parity
--   Configurable stop bits
--   AXI UART Interface
--   UART Bootloader
--   Error Detection
--   DMA Support
-
-------------------------------------------------------------------------
-
 # References
 
--   UART Communication Protocol
--   Xilinx Vivado Documentation
--   PySerial Documentation
--   Digital Design and Computer Architecture
--   FPGA Vendor Documentation
-
-------------------------------------------------------------------------
-
-# ⭐ Repository Highlights
-
--   Complete UART protocol implementation from scratch
--   FPGA ↔ FPGA communication
--   Python ↔ FPGA communication
--   Fully synthesizable Verilog RTL
--   Simulation and hardware verified
--   Beginner-friendly educational project
--   Modular design for reuse in larger FPGA systems
+-   [UART Communication Protocol](https://www.analog.com/en/resources/analog-dialogue/articles/uart-a-hardware-communication-protocol.html)
+-   [pySerial Documentation](https://pyserial.readthedocs.io/en/latest/pyserial.html)
