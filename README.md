@@ -3,13 +3,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Language](https://img.shields.io/badge/Language-Verilog%20HDL-blue)
 ![Protocol](https://img.shields.io/badge/Protocol-UART-success)
-![FPGA](https://img.shields.io/badge/FPGA-AMD%20Spartan--7-orange)
-![Board](https://img.shields.io/badge/Board-Boolean%20Board-purple)
-![EDA](https://img.shields.io/badge/EDA-Vivado%202025.1-red)
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
-![pySerial](https://img.shields.io/badge/Library-pySerial-blueviolet)
-![Simulation](https://img.shields.io/badge/Simulation-Testbench-success)
-![Baud Rate](https://img.shields.io/badge/Baud%20Rate-9600%20bps-informational)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
 ## 📌 Project Overview
