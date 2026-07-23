@@ -236,13 +236,13 @@ Python Application ---> PySerial ---> USB-UART ---> FPGA UART Receiver
 
 <img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/FPGA_to_FPGA/FPGA_1/Block_Diagram.png" width="80%">
 
-### 🔹 [Demonstration Video Link](https://drive.google.com/drive/u/0/folders/1m59-p9pV0aRVx2pnkmNJWunH4V_RC9or)
+### 🔹 [Demonstration Video Link](https://drive.google.com/file/d/1eeageEWOBBxjjqvXWtAFap2wQx1AbEe9/view?usp=drive_link)
 
 ## Python to FPGA
 
 <img src="https://github.com/MOHAMMEDRIYAJ/UART-Communication-on-FPGA/blob/main/Python_to_FPGA/Block_Diagram.png" width="80%">
 
-### 🔹 [Demonstration Video Link](https://drive.google.com/drive/u/0/folders/1ru827u5xyHnpBnHoJCmtZsEZU2EpiBl1)
+### 🔹 [Demonstration Video Link](https://drive.google.com/file/d/1NttEVzvh2Uy6mRgLJns4EUHz_pMXw8iM/view?usp=drive_link)
 
 ------------------------------------------------------------------------
 
